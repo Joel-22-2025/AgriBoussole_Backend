@@ -1,0 +1,28 @@
+# Environnements et dépendances
+.venv/
+venv/
+env/
+*.env
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+
+# Données et fichiers générés
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+*.log
+server.log
+
+# Éditeurs / OS
+.DS_Store
+.idea/
+.vscode/

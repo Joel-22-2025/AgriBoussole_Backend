@@ -1,0 +1,5 @@
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "config.settings"
+pythonpath = ["."]
+testpaths = ["accounts/tests", "structures/tests", "engagement/tests"]
+addopts = "-v"
