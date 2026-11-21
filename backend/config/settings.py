@@ -85,8 +85,8 @@ DATABASE_URL = config('DATABASE_URL', default='')
 if DATABASE_URL:
     # Render fournit directement DATABASE_URL pour PostgreSQL.
     DATABASES = {
-        'default': dj_database_url.parse(
-            DATABASE_URL,
+        'default': dj_database_url.config(
+            default=DATABASE_URL,
             conn_max_age=600,
             ssl_require=DATABASE_URL.startswith(('postgres://', 'postgresql://')),
         )
