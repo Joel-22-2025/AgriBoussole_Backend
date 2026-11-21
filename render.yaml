@@ -34,6 +34,8 @@ services:
         sync: false
       - key: DEFAULT_SUPERADMIN_PASSWORD
         sync: false
+      - key: DATA_FIXTURE_URL
+        sync: false
       - key: DEFAULT_FROM_EMAIL
         value: "saei-orientation@example.com"
 

@@ -32,3 +32,13 @@ Variables importantes :
 2. Mettre cette URL dans `VITE_API_URL` sur Vercel.
 3. Redéployer le frontend.
 4. Vérifier `/api/schema/`, puis la connexion depuis le site.
+
+## Importer la base locale
+
+1. En local, depuis `backend/`, génère la fixture :
+   `../.venv/Scripts/python.exe manage.py export_initial_data`
+   Fichier produit : `backend/data/initial_data.json` (non versionné volontairement : il contient emails et mots de passe hachés).
+2. Deux options pour l'envoyer sur Render :
+   - Héberger ce fichier sur une URL HTTPS et renseigner `DATA_FIXTURE_URL` dans les variables Render. Le build l'importe automatiquement après `migrate`.
+   - Ou copier le fichier dans le service et lancer `python backend/manage.py import_initial_data --input <chemin>`.
+3. L'ordre est important : `migrate` d'abord, import ensuite. `loaddata` est idempotent et met à jour les objets existants.

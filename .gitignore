@@ -26,3 +26,6 @@ server.log
 .DS_Store
 .idea/
 .vscode/
+
+backend/data/initial_data.json
+backend/data/downloaded_initial_data.json
