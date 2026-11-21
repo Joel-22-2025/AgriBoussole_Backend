@@ -1,6 +1,8 @@
 """
 Django settings for config project.
 """
+
+
 from datetime import timedelta
 from pathlib import Path
 
@@ -255,3 +257,11 @@ if EMAIL_HOST:
 # ============================================================================
 DEFAULT_SUPERADMIN_EMAIL = config('DEFAULT_SUPERADMIN_EMAIL', default='')
 DEFAULT_SUPERADMIN_PASSWORD = config('DEFAULT_SUPERADMIN_PASSWORD', default='')
+
+
+
+ALLOWED_HOSTS = [
+    "agriboussole-backend.onrender.com",
+    "localhost",
+    "127.0.0.1",
+]
