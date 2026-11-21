@@ -3,6 +3,7 @@ services:
     name: agriboussole-backend
     runtime: python
     plan: free
+    rootDir: .
     pythonVersion: "3.12.7"
     buildCommand: bash build.sh
     startCommand: cd backend && gunicorn config.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --timeout 120 --access-logfile -

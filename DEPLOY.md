@@ -13,6 +13,17 @@
 5. Le build exécute `bash build.sh` : dépendances, `collectstatic`, `migrate`, puis création de l’administrateur.
 6. Le démarrage utilise Gunicorn. Le health check est `/api/schema/`.
 
+### Si le service Render a été créé manuellement
+
+Le fichier `render.yaml` n’est appliqué que lors d’un déploiement **Blueprint**. Pour un service créé à la main via le Dashboard, renseigne explicitement :
+
+- **Root Directory** : la racine du dépôt (champ vide ou `.`), pas `backend`.
+- **Build Command** : `bash build.sh`
+- **Start Command** : `cd backend && gunicorn config.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --timeout 120 --access-logfile -`
+- **Environment** : `PYTHON_VERSION=3.12.7` (ou laisser le fichier `runtime.txt` le déclarer).
+
+Sans cela, Render utilise sa commande par défaut `pip install -r requirements.txt && cd backend && ...`, ce qui échoue si le répertoire racine est réglé sur `backend`. Des copies de compatibilité (`backend/requirements.txt`, `backend/build.sh`, `backend/Procfile`, `backend/runtime.txt`) sont aussi fournies.
+
 Variables importantes :
 - `DATABASE_URL` est fournie par la base PostgreSQL Render et prioritaire sur `DB_*`.
 - `DEBUG=False` et `ALLOWED_HOSTS=.onrender.com` sont définis dans `render.yaml`.
